@@ -1,0 +1,13 @@
+receivers:
+  httprequest:
+
+exporters:
+  logging:
+    loglevel: debug
+
+service:
+  pipelines:
+    metrics:
+      receivers: [httprequest]
+      processors: []
+      exporters: [logging]

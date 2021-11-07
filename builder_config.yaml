@@ -1,0 +1,24 @@
+dist:
+  name: collector
+  description: My custom OpenTelemetry Collector distribution
+
+  # the module name for the new distribution, following Go mod conventions.
+  # Optional, but recommended.
+  module: github.com/pmalek/opentelemetry-custom-collector
+
+  # the OpenTelemetry Collector version to use as base for the distribution.
+  otelcol_version: 0.37.0
+
+  # whether the core components should be included in the distribution. Optional.
+  include_core: true
+
+# in case a local version should be used for the module,
+# the path is relative to the current dir, or a full path can be specified. Optional.
+
+receivers:
+  - gomod: "github.com/pmalek/opentelemetry-custom-collector/pkg/receiver/httprequestreceiver v0.0.1"
+    path: ./pkg/receiver/httprequestreceiver
+
+exporters:
+  - gomod: "github.com/pmalek/opentelemetry-custom-collector/pkg/exporter/fileexporter v0.0.1"
+    path: ./pkg/exporter/fileexporter

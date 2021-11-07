@@ -1,0 +1,16 @@
+receivers:
+  httprequest:
+
+exporters:
+  file:
+    path: /tmp/out
+
+  logging:
+    loglevel: info
+
+service:
+  pipelines:
+    metrics:
+      receivers: [httprequest]
+      processors: []
+      exporters: [logging,file]
